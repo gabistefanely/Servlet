@@ -65,7 +65,7 @@ public class TabuadaServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        // Obtenha o número da solicitação do parâmetro "numero"
+        
         String numeroStr = request.getParameter("numero");
         
         try {
@@ -150,11 +150,11 @@ public class LoginServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        // Obter valores do formulário
+      
         String login = request.getParameter("login");
         String senha = request.getParameter("senha");
 
-        // Verificar as credenciais (neste exemplo, login="admin" e senha="password")
+        
         if ("admin".equals(login) && "password".equals(senha)) {
             out.println("<html><body>");
             out.println("<h1>Login bem-sucedido!</h1>");
@@ -187,10 +187,10 @@ public class ContadorStringServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        // Obtenha o valor do campo de entrada de texto
+        
         String entradaTexto = request.getParameter("entradaTexto");
         
-        // Calcule o comprimento da string inserida
+        
         int comprimento = entradaTexto.length();
 
         out.println("<html>");
@@ -200,7 +200,7 @@ public class ContadorStringServlet extends HttpServlet {
         out.println("<body>");
         out.println("<h1>Comprimento da String inserida: " + comprimento + "</h1>");
 
-        // Campo de entrada de texto para inserir o próximo valor
+        
         out.println("<form action='/SeuProjeto/ContadorStringServlet' method='post'>");
         out.println("<label for='entradaTexto'>Insira uma nova String:</label>");
         out.println("<input type='text' id='entradaTexto' name='entradaTexto' required><br><br>");
@@ -237,29 +237,29 @@ public class AdivinhacaoServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
-        // Obter a sessão
+        
         HttpSession session = request.getSession();
 
-        // Verificar se é o início do jogo (primeira tentativa)
+        
         if (session.getAttribute("numeroSecreto") == null) {
-            // Gerar um número secreto aleatório entre 1 e 100
+            
             Random random = new Random();
             int numeroSecreto = random.nextInt(100) + 1;
 
-            // Armazenar o número secreto na sessão
+            
             session.setAttribute("numeroSecreto", numeroSecreto);
 
-            // Inicializar o contador de palpites
+            
             session.setAttribute("contadorPalpites", 0);
         }
 
-        // Recuperar o número secreto da sessão
+       
         int numeroSecreto = (int) session.getAttribute("numeroSecreto");
 
-        // Recuperar o contador de palpites da sessão
+        
         int contadorPalpites = (int) session.getAttribute("contadorPalpites");
 
-        // Obter o palpite do usuário a partir dos parâmetros da solicitação
+        
         String palpiteStr = request.getParameter("palpite");
 
         if (palpiteStr != null && !palpiteStr.isEmpty()) {
@@ -292,7 +292,7 @@ public class AdivinhacaoServlet extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
         } else {
-            // Página inicial do jogo
+            
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Jogo de Adivinhação</title>");
